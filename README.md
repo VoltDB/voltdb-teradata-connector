@@ -29,9 +29,10 @@ To configure your instance of VoltDB to export data out to Listener, you'll need
 
 3. Add property elements to set the HTTP headers (Content-Type and Authorization) that Listener expects with values from the Ingest code sample above. Also add a property named `endpoint` to set the endpoint URL of your Listener source. 
 
-### Setup Stream
+### Stream Setup
 
 To use the 'listener_target' configured above, you'll need to create a VoltDB stream that targets the 'listener_target' and write to it the data that needs to be exported. 
 
 You can create a stream using - `create stream my_stream export to target listener_target (columns...);` Any data that needs to be written out to the stream should be inserted into the stream by using the insert SQL syntax. e.g., `insert into my_stream values (......);`
 
+More information on understanding export and identifying your export strategy is documented here - https://docs.voltdb.com/UsingVoltDB/ChapExport.php.
