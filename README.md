@@ -27,7 +27,7 @@ To configure your instance of VoltDB to export data out to Listener, you'll need
         <property>...</property>
 </export>`
 
-3. Add property elements to set the HTTP headers (Content-Type and Authorization) that Listener expects with values from the Ingest code sample above. Also add a property named `endpoint` to set the endpoint URL of your Listener source. 
+3. Add property elements to set the HTTP headers (Content-Type and Authorization) that Listener expects with values from the Ingest code sample above. Also add a property named `endpoint` to set the endpoint URL of your Listener source. Optionally, you can specify a batch.mode property that can be set to true or false to indicate whether you want your messages to be exported out as a batch or individually.
 
 ### Stream Setup
 
