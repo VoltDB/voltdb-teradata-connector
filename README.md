@@ -25,6 +25,7 @@ To configure your instance of VoltDB to export data out to Listener, you'll need
 2. You can either do this by adding a new Export connector using the Volt Management Console or by editing your deployment.xml to configure this connector as a custom connector by adding a new export element - `<export>
         <configuration enabled="true" target="listener_target" type="custom" exportconnectorclass="org.voltdb.exportclient.TeradataListenerExportClient">
         <property>...</property>
+        </configuration>
 </export>`
 
 3. Add property elements to set the HTTP headers (Content-Type and Authorization) that Listener expects with values from the Ingest code sample above. Also add a property named `endpoint` to set the endpoint URL of your Listener source. Optionally, you can specify a batch.mode property that can be set to true or false to indicate whether you want your messages to be exported out as a batch or individually.
