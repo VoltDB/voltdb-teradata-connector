@@ -1,3 +1,20 @@
+/* This file is part of VoltDB.
+ * Copyright (C) 2008-2017 VoltDB Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with VoltDB.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package org.voltdb.exportclient;
 
 import java.io.IOException;
@@ -35,14 +52,14 @@ public class TeradataListenerExportClient extends ExportClientBase {
 
 	private static String CONTENT_TYPE = "Content-Type";
 	private static String AUTHORIZATION = "Authorization";
-	
+
 	private static final VoltLogger logger = new VoltLogger("ExportClient");
 
 	private static String m_endpoint = null;
 	private static String content_type = null;
 	private static String auth_token = null;
 	private static Boolean m_batchMode = Boolean.FALSE;
-	
+
 	private static final int HTTP_EXPORT_MAX_CONNS = Integer.getInteger(
 			"HTTP_EXPORT_MAX_CONNS", 20);
 
@@ -59,7 +76,7 @@ public class TeradataListenerExportClient extends ExportClientBase {
 		if (m_endpoint.isEmpty()) {
 			throw new IllegalArgumentException("HttpExportClient: must provide an endpoint");
 		}
-		content_type = config.getProperty("Content-Type", "").trim(); 
+		content_type = config.getProperty("Content-Type", "").trim();
 		auth_token = config.getProperty("Authorization", "").trim();
 		m_batchMode = Boolean.parseBoolean(config.getProperty("batch.mode","true"));
 	}
@@ -117,7 +134,7 @@ public class TeradataListenerExportClient extends ExportClientBase {
 			else
 				m_outstanding.clear();
 		}
-		
+
 		private JSONObject makeJSONObject(ExportRowData pojo) throws RestartBlockException {
 			JSONObject jsonObject = new JSONObject();
 			try {
@@ -229,7 +246,7 @@ public class TeradataListenerExportClient extends ExportClientBase {
 			}
 		}
 	}
-	
+
 	private class DebugCallback implements FutureCallback<HttpResponse> {
 		@Override
 		public void cancelled() {
